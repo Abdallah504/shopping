@@ -1,0 +1,1 @@
+const String categoriesList = 'products/category-list';
