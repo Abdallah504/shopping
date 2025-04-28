@@ -10,5 +10,5 @@ class AppColors{
   Color white = Colors.white;
 
 }
-
+dynamic langCode;
 AppCubit appCubit(context) => AppCubit.get(context);

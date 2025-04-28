@@ -1,10 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shopping/view-model/core/constant.dart';
 import 'package:shopping/view-model/core/di.dart';
+import 'package:shopping/view-model/logic/app-cubit/app_cubit.dart';
 import 'package:shopping/view/screens/splash-screen.dart';
-
-void main() async{
+final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   await init();
@@ -12,7 +15,7 @@ void main() async{
     EasyLocalization(
       supportedLocales: const [Locale('en'), Locale('ar')],
       path: 'assets/translations', // Path to translation files
-      fallbackLocale:  Locale('en'), // Default locale
+      fallbackLocale: Locale('en'), // Default locale
       child: const MyApp(),
     ),
   );
@@ -21,27 +24,38 @@ void main() async{
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(360, 690),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (context,_){
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Shopping',
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-            useMaterial3: true,
-          ),
-          locale: context.locale, // Locale from EasyLocalization
-          supportedLocales: context.supportedLocales,
-          localizationsDelegates: context.localizationDelegates,
-          home: SplashScreen(),
-        );
-      },
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => di<AppCubit>()..ReadLang()..ReadTheme())
+      ],
+      child: ScreenUtilInit(
+        designSize: const Size(360, 690),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, _) {
+          return BlocBuilder<AppCubit, AppState>(
+            builder: (context, state) {
+              return MaterialApp(
+                scaffoldMessengerKey: scaffoldMessengerKey,
+                debugShowCheckedModeBanner: false,
+                title: 'Shopping',
+                theme: ThemeData(
+                  brightness: appCubit(context).dark
+                      ? Brightness.dark
+                      : Brightness.light,
+                  useMaterial3: true,
+                ),
+                locale: context.locale,
+                supportedLocales: context.supportedLocales,
+                localizationsDelegates: context.localizationDelegates,
+                home: SplashScreen(),
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }
