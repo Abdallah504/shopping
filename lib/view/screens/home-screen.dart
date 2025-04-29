@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shopping/view-model/core/constant.dart';
 import 'package:shopping/view-model/logic/app-cubit/app_cubit.dart';
 import 'package:shopping/view/widgets/banner-widget.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,7 +17,25 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late YoutubePlayerController _youtubeController;
 
+  @override
+  void initState() {
+    super.initState();
+    _youtubeController = YoutubePlayerController(
+      initialVideoId: 'PEMvVkFrGQs', // Replace with your video ID
+      flags: const YoutubePlayerFlags(
+        autoPlay: false,
+        mute: false,
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _youtubeController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit,AppState>(builder: (context,state){
@@ -38,7 +57,54 @@ class _HomeScreenState extends State<HomeScreen> {
                           fontWeight: FontWeight.bold,fontStyle: FontStyle.italic),),
                   )
               ),
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: YoutubePlayer(
+                  controller: _youtubeController,
+                  showVideoProgressIndicator: true,
+                  progressIndicatorColor: Colors.red,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Container(
+                  height: 100.h,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    color: appCubit(context).dark==true
+                        ? AppColors().white
+                        : AppColors().black,
+                    borderRadius: BorderRadius.circular(10).r
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding:  EdgeInsets.all(8.0).r,
+                        child: Text('Want to see more products?!',style: TextStyle(color: appCubit(context).dark==false
+                            ? AppColors().white
+                            : AppColors().black,
+                            fontSize: 20.sp
+                        ),),
+                      ),
 
+                      SizedBox(height: 10.h,),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Padding(
+                          padding:  EdgeInsets.all(8.0).r,
+                          child: Text('Explore our products in categories tap',style: TextStyle(color: appCubit(context).dark==false
+                              ? AppColors().orange
+                              : AppColors().black,
+                          fontSize: 12.sp
+                          ),),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ),
 
             ],
           ),

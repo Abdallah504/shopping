@@ -8,6 +8,7 @@ import '../data/local/cachehelper.dart';
 import '../data/online/dio-helper.dart';
 import '../data/online/repo.dart';
 import '../logic/app-cubit/app_cubit.dart';
+import '../logic/product-cubit/product_cubit.dart';
 
 
 
@@ -40,6 +41,9 @@ Future init() async {
 
   di.registerFactory<AppCubit>(
         () => AppCubit(di<Repository>()),
+  );
+  di.registerFactory<ProductCubit>(
+        () => ProductCubit(di<Repository>()),
   );
 
 

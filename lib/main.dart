@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shopping/view-model/core/constant.dart';
 import 'package:shopping/view-model/core/di.dart';
 import 'package:shopping/view-model/logic/app-cubit/app_cubit.dart';
+import 'package:shopping/view-model/logic/product-cubit/product_cubit.dart';
 import 'package:shopping/view/screens/splash-screen.dart';
 final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
 void main() async {
@@ -28,7 +29,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => di<AppCubit>()..ReadLang()..ReadTheme())
+        BlocProvider(create: (context) => di<AppCubit>()..ReadLang()..ReadTheme()),
+        BlocProvider(create: (context)=>di<ProductCubit>()..getCat())
       ],
       child: ScreenUtilInit(
         designSize: const Size(360, 690),

@@ -16,5 +16,15 @@
   "categories": "فئات",
   "cart": "عربة التسوق",
   "profile": "الملف الشخصي",
-  "trendingProducts": "المنتجات الرائجة"
+  "trendingProducts": "المنتجات الرائجة",
+  "language": "اللغه",
+  "theme": "اللون",
+  "yourCart": "سلة التسوق الخاصة بك",
+  "yourCartIsEmpty": "سلة التسوق الخاصة بك فارغة",
+  "nothing": "يبدو أنك لم تقم بإضافة أي شيء بعد.",
+  "exploreProducts": "استكشاف المنتجات",
+  "total": "المجموع",
+  "checkout": "الدفع",
+  "allProducts": "جميع المنتجات",
+  "addToCart": "أضف إلى السلة"
 }

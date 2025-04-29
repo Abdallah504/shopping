@@ -16,7 +16,7 @@ class DioImplementation extends DioHelper {
     BaseOptions(
       baseUrl: 'https://dummyjson.com/',
       receiveDataWhenStatusError: true,
-      connectTimeout: const Duration(seconds: 20),
+      connectTimeout: const Duration(seconds: 200),
       queryParameters: {
 
       },

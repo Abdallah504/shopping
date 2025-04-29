@@ -16,5 +16,15 @@
   "categories": "Categories",
   "cart": "Cart",
   "profile": "Profile",
-  "trendingProducts": "Trending products"
+  "trendingProducts": "Trending products",
+  "language": "Language",
+  "theme": "Theme",
+  "yourCart": "Your Cart",
+  "yourCartIsEmpty": "Your cart is empty",
+  "nothing": "Looks like you haven't added anything yet.",
+  "exploreProducts": "Explore Products",
+  "total": "Total",
+  "checkout": "Checkout",
+  "allProducts": "All Products",
+  "addToCart": "Add to Cart"
 }

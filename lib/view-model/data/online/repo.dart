@@ -6,6 +6,8 @@ import '../local/cachehelper.dart';
 
 abstract class Repository {
   Future<Response?>categoriesListData();
+  Future<Response?>categoriesProductList({required String categoryName});
+  Future<Response?>prodDetailData({required int id});
 }
 
 class RepoImplementation implements Repository{
@@ -16,5 +18,15 @@ class RepoImplementation implements Repository{
   @override
   Future<Response?> categoriesListData() async{
    return await dioHelper?.getData(url: categoriesList);
+  }
+
+  @override
+  Future<Response?> categoriesProductList({required String categoryName}) async{
+    return await dioHelper?.getData(url: '$categoryProd/$categoryName');
+  }
+
+  @override
+  Future<Response?> prodDetailData({required int id})async {
+    return await dioHelper?.getData(url: '$prodDetail/$id');
   }
 }
