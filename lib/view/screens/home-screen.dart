@@ -82,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Padding(
                         padding:  EdgeInsets.all(8.0).r,
-                        child: Text('Want to see more products?!',style: TextStyle(color: appCubit(context).dark==false
+                        child: Text('want'.tr(),style: TextStyle(color: appCubit(context).dark==false
                             ? AppColors().white
                             : AppColors().black,
                             fontSize: 20.sp
@@ -94,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         alignment: Alignment.center,
                         child: Padding(
                           padding:  EdgeInsets.all(8.0).r,
-                          child: Text('Explore our products in categories tap',style: TextStyle(color: appCubit(context).dark==false
+                          child: Text('',style: TextStyle(color: appCubit(context).dark==false
                               ? AppColors().orange
                               : AppColors().black,
                           fontSize: 12.sp
