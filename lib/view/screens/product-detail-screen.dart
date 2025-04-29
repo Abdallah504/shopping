@@ -24,7 +24,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           return BlocConsumer<ProductCubit,ProductState>(
               builder: (context,state){
                 return Scaffold(
-                  appBar: AppBar(
+                  appBar:prodCubit(context).productDetailModel!=null? AppBar(
                     title: Text(prodCubit(context).productDetailModel!.title ?? 'Product Details',
                     style: TextStyle(color: appCubit(context).dark==false? AppColors().black:AppColors().white),
                     ),
@@ -40,7 +40,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         Navigator.pop(context);
                       },
                     ),
-                  ),
+                  ):null,
                   body:prodCubit(context).productDetailModel!=null? SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
