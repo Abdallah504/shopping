@@ -94,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         alignment: Alignment.center,
                         child: Padding(
                           padding:  EdgeInsets.all(8.0).r,
-                          child: Text('',style: TextStyle(color: appCubit(context).dark==false
+                          child: Text('explore'.tr(),style: TextStyle(color: appCubit(context).dark==false
                               ? AppColors().orange
                               : AppColors().black,
                           fontSize: 12.sp
