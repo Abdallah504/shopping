@@ -43,17 +43,27 @@ dependencies:
   flutter_screenutil: ^5.9.3
   shared_preferences: ^2.5.3
   youtube_player_flutter: ^9.1.1
+  flutter_launcher_icons: ^0.14.3
+  flutter_native_splash: ^2.4.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
   flutter_lints: ^5.0.0
+  flutter_launcher_icons: ^0.14.3 # <-- This is the correct package name
+
+flutter_icons: # <-- This goes outside of dev_dependencies
+    android: true
+    ios: true
+    image_path: "assets/logo.jpg"
+    remove_alpha_ios: true
+flutter_native_splash:
+  color: "#ffffff" # Background color
+  image: assets/logo.jpg # Your splash image
+  android: true
+  ios: true
+  web: true
+  color_dark: "#ffffff"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
