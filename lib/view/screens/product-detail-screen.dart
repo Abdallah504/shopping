@@ -41,7 +41,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       },
                     ),
                   ),
-                  body: SingleChildScrollView(
+                  body:prodCubit(context).productDetailModel!=null? SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -191,6 +191,10 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                           ),
                         ),
                       ],
+                    ),
+                  ): Center(
+                    child: CircularProgressIndicator(
+                      color: AppColors().orange,
                     ),
                   ),
                 );
